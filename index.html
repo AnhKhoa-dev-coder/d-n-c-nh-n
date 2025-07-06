@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tính ngày dự kiến lợn đẻ</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 400px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px #ccc;
+        padding: 30px;
+      }
+      h2 {
+        text-align: center;
+        color: #2d7a2d;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+      }
+      input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        width: 100%;
+        padding: 12px;
+        background: #2d7a2d;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #256b25;
+      }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 18px;
+        color: #1a4d1a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Tính ngày dự kiến lợn đẻ</h2>
+      <label for="ngay_phoi">Chọn ngày phối giống:</label>
+      <input type="date" id="ngay_phoi" />
+      <button onclick="tinhNgayDe()">Tính ngày đẻ</button>
+      <div class="result" id="result"></div>
+    </div>
+    <script>
+      function tinhNgayDe() {
+        const input = document.getElementById("ngay_phoi").value;
+        if (!input) {
+          document.getElementById("result").innerText =
+            "Vui lòng chọn ngày phối giống!";
+          return;
+        }
+        const date = new Date(input);
+        if (isNaN(date.getTime())) {
+          document.getElementById("result").innerText = "Ngày không hợp lệ!";
+          return;
+        }
+        // Thêm 114 ngày
+        date.setDate(date.getDate() + 114);
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+        document.getElementById(
+          "result"
+        ).innerText = `Ngày dự kiến lợn đẻ: ${day}/${month}/${year}`;
+      }
+    </script>
+  </body>
+</html>
