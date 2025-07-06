@@ -28,7 +28,7 @@
         margin-bottom: 8px;
         font-weight: bold;
       }
-      input[type="date"] {
+      input[type="text"] {
         width: 100%;
         padding: 10px;
         margin-bottom: 16px;
@@ -59,32 +59,46 @@
   <body>
     <div class="container">
       <h2>Tính ngày dự kiến lợn đẻ</h2>
-      <label for="ngay_phoi">Chọn ngày phối giống:</label>
-      <input type="date" id="ngay_phoi" />
+      <label for="ngay_phoi">Chọn ngày phối giống (dd/mm/yyyy):</label>
+      <input type="text" id="ngay_phoi" placeholder="dd/mm/yyyy" />
       <button onclick="tinhNgayDe()">Tính ngày đẻ</button>
       <div class="result" id="result"></div>
     </div>
     <script>
       function tinhNgayDe() {
-        const input = document.getElementById("ngay_phoi").value;
+        const input = document.getElementById("ngay_phoi").value.trim();
         if (!input) {
           document.getElementById("result").innerText =
-            "Vui lòng chọn ngày phối giống!";
+            "Vui lòng nhập ngày phối giống!";
           return;
         }
-        const date = new Date(input);
-        if (isNaN(date.getTime())) {
+        // Kiểm tra và chuyển đổi định dạng dd/mm/yyyy
+        const parts = input.split("/");
+        if (parts.length !== 3) {
+          document.getElementById("result").innerText = "Định dạng ngày không hợp lệ!";
+          return;
+        }
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1; // Tháng trong JS bắt đầu từ 0
+        const year = parseInt(parts[2], 10);
+        const date = new Date(year, month, day);
+        if (
+          isNaN(date.getTime()) ||
+          date.getDate() !== day ||
+          date.getMonth() !== month ||
+          date.getFullYear() !== year
+        ) {
           document.getElementById("result").innerText = "Ngày không hợp lệ!";
           return;
         }
         // Thêm 114 ngày
         date.setDate(date.getDate() + 114);
-        const day = String(date.getDate()).padStart(2, "0");
-        const month = String(date.getMonth() + 1).padStart(2, "0");
-        const year = date.getFullYear();
+        const d = String(date.getDate()).padStart(2, "0");
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const y = date.getFullYear();
         document.getElementById(
           "result"
-        ).innerText = `Ngày dự kiến lợn đẻ: ${day}/${month}/${year}`;
+        ).innerText = `Ngày dự kiến lợn đẻ: ${d}/${m}/${y}`;
       }
     </script>
   </body>
