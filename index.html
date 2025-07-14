@@ -3,58 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tính ngày dự kiến lợn đẻ.</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background: #f7f7f7;
-        margin: 0;
-        padding: 0;
-      }
-      .container {
-        max-width: 400px;
-        margin: 60px auto;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px #ccc;
-        padding: 30px;
-      }
-      h2 {
-        text-align: center;
-        color: #2d7a2d;
-      }
-      label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-      }
-      input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 16px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-      button {
-        width: 100%;
-        padding: 12px;
-        background: #2d7a2d;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #256b25;
-      }
-      .result {
-        margin-top: 20px;
-        text-align: center;
-        font-size: 18px;
-        color: #1a4d1a;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <title>Tính ngày dự kiếnfdfsfsf lợn đẻ.</title>
   </head>
   <body>
     <div class="container">
@@ -64,42 +14,6 @@
       <button onclick="tinhNgayDe()">Tính ngày đẻ</button>
       <div class="result" id="result"></div>
     </div>
-    <script>
-      function tinhNgayDe() {
-        const input = document.getElementById("ngay_phoi").value.trim();
-        if (!input) {
-          document.getElementById("result").innerText =
-            "Vui lòng nhập ngày phối giống!";
-          return;
-        }
-        // Kiểm tra và chuyển đổi định dạng dd/mm/yyyy
-        const parts = input.split("/");
-        if (parts.length !== 3) {
-          document.getElementById("result").innerText = "Định dạng ngày không hợp lệ!";
-          return;
-        }
-        const day = parseInt(parts[0], 10);
-        const month = parseInt(parts[1], 10) - 1; // Tháng trong JS bắt đầu từ 0
-        const year = parseInt(parts[2], 10);
-        const date = new Date(year, month, day);
-        if (
-          isNaN(date.getTime()) ||
-          date.getDate() !== day ||
-          date.getMonth() !== month ||
-          date.getFullYear() !== year
-        ) {
-          document.getElementById("result").innerText = "Ngày không hợp lệ!";
-          return;
-        }
-        // Thêm 114 ngày
-        date.setDate(date.getDate() + 114);
-        const d = String(date.getDate()).padStart(2, "0");
-        const m = String(date.getMonth() + 1).padStart(2, "0");
-        const y = date.getFullYear();
-        document.getElementById(
-          "result"
-        ).innerText = `Ngày dự kiến lợn đẻ: ${d}/${m}/${y}`;
-      }
-    </script>
+    <script src="scrip.js"></script>
   </body>
 </html>
