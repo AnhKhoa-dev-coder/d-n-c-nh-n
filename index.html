@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tính ngày dự kiến lợn đẻ</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="corner-info">
+        <img
+          src="./img/1b34cb8b-1448-43ae-b1b9-7a431a4532c0.jpg"
+          alt="Avatar"
+          class="avatar-img"
+        />
+        <div class="author-name">Anh Khoa : Nhà sáng tạo giao diện - phát triển và cải tiến giao diện </div>
+      </div>
+
+      <h2>Tính ngày dự kiến lợn đẻ</h2>
+
+      <!-- PHẦN TÍNH NGÀY ĐẺ -->
+      <label for="ngay_phoi">Chọn ngày phối giống (ngày/tháng/năm):</label>
+      <input type="text" id="ngay_phoi" placeholder="ngày/tháng/năm" />
+      <button onclick="tinhNgayDe()">Tính ngày đẻ</button>
+      <div class="result" id="result"></div>
+
+      <hr style="margin: 25px 0" />
+
+      <!-- PHẦN DỰ ĐOÁN AI -->
+      <!-- <h2>Dự đoán số lợn con (AI)</h2>
+
+      <label for="breed">Giống lợn:</label>
+      <select id="breed">
+        <option value="Yorkshire">Yorkshire</option>
+        <option value="Landrace">Landrace</option>
+        <option value="Duroc">Duroc</option>
+        <option value="Khác">Khác</option>
+      </select>
+
+      <label for="parity">Lứa Thứ Mấy Của Lợn Mẹ</label>
+      <input type="number" id="parity" placeholder="VD: 1, 2, 3..." />
+
+      <label for="weight">Cân nặng lợn mẹ (kg)</label>
+      <input type="number" id="weight" placeholder="VD: 160" />
+
+      <label for="previous">Số con lứa trước</label>
+      <input type="number" id="previous" placeholder="VD: 10" />
+
+      <button onclick="duDoanAI()">Dự đoán bằng AI</button>
+      <div class="result" id="ai_result"></div>
+    </div> -->
+
+    <!-- Tên file JS khớp với file bạn lưu -->
+    <script src="ai.js"></script>
+  </body>
+</html>
